@@ -1,0 +1,47 @@
+w3-small: font-small
+w3-center: text-center
+
+container and overflow:auto
+
+r-container
+
+normalize
+
+
+attribute selector and class?
+
+role? custom role: for readability?
+
+header[role="header"] ul{
+    list-style-type: none;
+    margin: 30px 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+or
+
+<ul class="topnav">
+ul.topnav{}
+
+#bootstrap
+class="col-xs-12 col-sm-6 col-md-6 col-lg-6
+https://stackoverflow.com/questions/24175998/meaning-of-numbers-in-col-md-4-col-xs-1-col-lg-2-in-bootstrap 
+
+grid > see set2
+
+@media screen and (max-width: 800px){ 
+    h1.toplogo {float:none;}
+    header[role="header"] ul li {float:none;}
+--> bootstrap
+
+div class="row" > line up
+
+stacking icon£º
+              <h3>
+                <span class="fa-stack fa-1x icon">
+                  <i class="fas fa-circle fa-stack-2x"></i>
+                  <i class="fas fa-graduation-cap fa-stack-1x fa-inverse"></i>
+                </span>
+                Education
+              </h3>

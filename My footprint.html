@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+
+<body>
+
+<div id="map" style="width:400px;height:300px"></div>
+
+<script>
+function myMap() {
+  var myCenter = new google.maps.LatLng(40,-160);
+  var mapCanvas = document.getElementById("map");
+  var mapOptions = {center: myCenter, zoom: 1,mapTypeId: google.maps.MapTypeId.SATELLITE};
+  var map = new google.maps.Map(mapCanvas, mapOptions);
+
+  
+<!-- polyline & symbol on it-->
+  var home = new google.maps.LatLng(23.018250, 113.126892); 
+  var uni1 = new google.maps.LatLng(30.536033, 114.364332);
+  var uni2 = new google.maps.LatLng(43.471499, -80.545373);
+  var uni3 = new google.maps.LatLng(44.972100, -93.229469);
+
+<!-- image icon-->
+  var home_icon = {
+	url: 'https://static.wixstatic.com/media/608e25_d3a7238a4d914c84a4c44a4b646c62b1~mv2.png/v1/fit/w_375,h_375/608e25_d3a7238a4d914c84a4c44a4b646c62b1~mv2.png',
+	scaledSize: new google.maps.Size(30, 30),
+	origin: new google.maps.Point(0, 0),
+	anchor: new google.maps.Point(30, 5)
+  };
+  var marker= new google.maps.Marker({
+    position: home,
+	icon: home_icon,
+	map: map
+  });
+  
+  var uni1_icon = {
+  url: 'https://static.wixstatic.com/media/608e25_272dd8f05b2f4f77b7126f74d82b9b86~mv2.jpg/v1/fit/w_375,h_375/608e25_272dd8f05b2f4f77b7126f74d82b9b86~mv2.jpg',
+	scaledSize: new google.maps.Size(50, 18),
+  };
+  var marker1 = new google.maps.Marker({
+    position: uni1,
+	icon: uni1_icon,
+	map: map
+  });
+  
+  var uni2_icon = {
+  url: 'https://static.wixstatic.com/media/608e25_059b6e2680394e568e37eba488a407a2~mv2.jpg/v1/fit/w_375,h_375/608e25_059b6e2680394e568e37eba488a407a2~mv2.jpg',
+	scaledSize: new google.maps.Size(50, 16),
+	origin: new google.maps.Point(0, 0),
+	anchor: new google.maps.Point(20, -5)
+  };
+  var marker2 = new google.maps.Marker({
+    position: uni2,
+	icon: uni2_icon,
+	map: map
+  });
+
+  var uni3_icon = {
+	url: 'https://static.wixstatic.com/media/608e25_56b58e6d0ccb4f498a0601a53e5ef51d~mv2.gif/v1/fit/w_375,h_375/608e25_56b58e6d0ccb4f498a0601a53e5ef51d~mv2.gif',
+	scaledSize: new google.maps.Size(30, 17)
+  };
+  
+  var marker3= new google.maps.Marker({
+    position: uni3,
+	icon: uni3_icon,
+	map: map
+  });
+
+<!--Open an InfoWindow When Clicking on The Marker-->  
+  google.maps.event.addListener(marker,'click',function() {
+	var infowindow = new google.maps.InfoWindow({
+		content: "Foshan City, Guangdong, China"
+	});
+	infowindow.open(map,marker);   
+  });
+
+  google.maps.event.addListener(marker1,'click',function() {
+	var infowindow = new google.maps.InfoWindow({
+		content: "Wuhan University, China"
+	});
+	infowindow.open(map,marker1);   
+  });
+
+  google.maps.event.addListener(marker2,'click',function() {
+	var infowindow = new google.maps.InfoWindow({
+		content: "University of Waterloo, Canada"
+	});
+	infowindow.open(map,marker2);   
+  });
+  
+  google.maps.event.addListener(marker3,'click',function() {
+	var infowindow = new google.maps.InfoWindow({
+		content: "University of Minnesota, USA"
+	});
+	infowindow.open(map,marker3);   
+  });
+
+<!-- Zoom in when double click-->
+  google.maps.event.addListener(marker,'dblclick',function() {
+	map.setZoom(13);
+	map.setCenter(marker.getPosition())
+	map.setMapTypeId('roadmap');
+  });
+
+  google.maps.event.addListener(marker1,'dblclick',function() {
+	map.setZoom(13);
+	map.setCenter(marker1.getPosition())
+	map.setMapTypeId('roadmap');
+  });
+  
+  google.maps.event.addListener(marker2,'dblclick',function() {
+	map.setZoom(13);
+	map.setCenter(marker2.getPosition())
+	map.setMapTypeId('roadmap');
+  });
+  
+  google.maps.event.addListener(marker3,'dblclick',function() {
+	map.setZoom(13);
+	map.setCenter(marker3.getPosition())
+	map.setMapTypeId('roadmap');
+  });
+  
+  
+<!-- path-->  
+  var lineSymbol = {
+    path: google.maps.SymbolPath.CIRCLE,
+    scale: 2,
+    strokeColor: '#f2f2f2'
+	};
+  
+  var Path = new google.maps.Polyline({
+    path: [home, uni1, uni2, uni3],
+    strokeColor: "#f2f2f2",
+    strokeOpacity: 0.8,
+    strokeWeight: 1.5,
+	icons: [{
+      icon: lineSymbol,
+      offset: '100%'
+    }],
+  });
+  Path.setMap(map);
+  
+  animateCircle(Path);
+  
+   
+} <!-- end of mymap function -->
+
+<!-- define fuction for the animated symbol on line -->
+function animateCircle(Path) {
+    var count = 0;
+    window.setInterval(function() {
+      count = (count + 1) % 200;
+
+      var icons = Path.get('icons');
+      icons[0].offset = (count / 2) + '%';
+      Path.set('icons', icons);
+  }, 20);
+}
+</script>
+
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDcYxAvgGhqObddkipwj6ssTODPjR8xYic&callback=myMap"></script>
+
+
+
+</body>
+</html>
