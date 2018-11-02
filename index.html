@@ -248,8 +248,8 @@
         </div>
         <div class="container-fluid">
             <div class="col-lg-5 col-lg-offset-1 col-md-6 col-sm-6 comment-agile1" data-aos="flip-left" style="margin-top:20px">
-                <form action="sendmail.php" method="post">
 
+                <form>
                     <div class="control-group form-group">
                         <div class="controls">
                             <input type="text" class="form-control" id="name" placeholder="Full Name" required="">
@@ -257,15 +257,22 @@
                         </div>
                     </div>
 
-                    <div class="control-group form-group">
+                    <!--div class="control-group form-group">
                         <div class="controls">
                             <input type="email" class="form-control" id="email" placeholder="Email Address" required="">
                         </div>
-                    </div>
+                    </div-->
+
+                    <!--div class="control-group form-group">
+                        <div class="controls">
+                            <input type="text" class="form-control" id="name1" placeholder="Phone Number" required="">
+                            <p class="help-block"></p>
+                        </div>
+                    </div-->
 
                     <div class="control-group form-group">
                         <div class="controls">
-                            <input type="text" class="form-control" id="name1" placeholder="Phone Number" required="">
+                            <input type="text" class="form-control" id="subject" placeholder="Subject" required="">
                             <p class="help-block"></p>
                         </div>
                     </div>
@@ -276,7 +283,7 @@
                         </div>
                     </div>
 
-                    <button type="submit" class="btn btn-primary">Send Message</button>
+                    <button onclick="sendMail(); return false" class="btn btn-primary">Send Message</button>
                 </form>
             </div>
             <div class="col-lg-5 col-md-6 col-sm-6 comment-agile2" data-aos="flip-right" style="margin-top:20px">
@@ -289,11 +296,12 @@
         </div>
     </section>
 
+    <!--the web browser invokes the email client to send the form submission -->
     <script>
         function sendMail() {
             var link = "mailto:yan00040@umn.com"
                 + "?cc=irisgogo.yan@gmail.com"
-                + "&subject=" + escape("Message from"+document.getElementById('name').value)
+                + "&subject=" + escape("Message from "+document.getElementById('name').value+": "+document.getElementById('subject').value)
                 + "&body=" + escape(document.getElementById('message').value)
             ;
 
