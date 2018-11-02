@@ -82,7 +82,7 @@
             <div class="header-content-inner">
                 <h1>Hi! I'm Iris</h1>
                 <hr>
-                <p><span class="text-emphasis" style="font-weight:800">Stay Curious, Keep Learning</span></p>
+                <p><span class="text-emphasis" style="font-weight:bold">Stay Curious, Keep Learning</span></p>
                 <p>Analyzing and visualizing spatial data <br> to find out the underlying patterns behind locations</p>
                 <a href="#about" class="btn btn-primary btn-xl page-scroll">About me</a>
             </div>
@@ -248,30 +248,35 @@
         </div>
         <div class="container-fluid">
             <div class="col-lg-5 col-lg-offset-1 col-md-6 col-sm-6 comment-agile1" data-aos="flip-left" style="margin-top:20px">
-                <form action="#" method="post">
+                <form action="sendmail.php" method="post">
+
                     <div class="control-group form-group">
                         <div class="controls">
                             <input type="text" class="form-control" id="name" placeholder="Full Name" required="">
                             <p class="help-block"></p>
                         </div>
                     </div>
+
                     <div class="control-group form-group">
                         <div class="controls">
                             <input type="email" class="form-control" id="email" placeholder="Email Address" required="">
                         </div>
                     </div>
+
                     <div class="control-group form-group">
                         <div class="controls">
                             <input type="text" class="form-control" id="name1" placeholder="Phone Number" required="">
                             <p class="help-block"></p>
                         </div>
                     </div>
+
                     <div class="control-group form-group">
                         <div class="controls">
                             <textarea rows="5" cols="100" class="form-control" id="message" placeholder="Message" required=""></textarea>
                         </div>
                     </div>
-                    <button onclick="sendMail(); return false" type="submit" class="btn btn-primary">Send Message</button>
+
+                    <button type="submit" class="btn btn-primary">Send Message</button>
                 </form>
             </div>
             <div class="col-lg-5 col-md-6 col-sm-6 comment-agile2" data-aos="flip-right" style="margin-top:20px">
